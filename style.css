@@ -54,3 +54,8 @@ footer {
   border-top: 1px solid #30363d;
   font-size: 0.9rem;
 }
+.disabled {
+  color: #bbb;
+  cursor: default;
+  text-decoration: none;
+}
