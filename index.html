@@ -3,145 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mitchflix</title>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Fira+Code&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f141a;
-      --text: #e0e0e0;
-      --link: #4da3ff;
-      --accent: #66b3ff;
-    }
-
-    [data-theme="light"] {
-      --bg: #ffffff;
-      --text: #111;
-      --link: #0055cc;
-      --accent: #0077ff;
-    }
-
-    /* Smooth theme transition */
-    * {
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    }
-
-    body {
-      font-family: 'Atkinson Hyperlegible', 'Fira Code', monospace;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeIn 0.8s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 2rem;
-    }
-
-    h1, h2 {
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover, a:focus {
-      text-decoration: underline;
-    }
-
-    hr {
-      border: none;
-      border-bottom: 1px solid var(--accent);
-      margin: 1.5rem 0;
-    }
-
-    .theme-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 1rem;
-      font-size: 1.5rem;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.3s;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.1);
-    }
-
-    .emoji {
-      transition: transform 0.5s ease;
-    }
-
-    .emoji.rotate {
-      transform: rotate(360deg);
-    }
-  </style>
+  <title>Mitchflix | Homelab & Cybersecurity Projects</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle theme">
-    <span class="emoji" id="themeEmoji">🌞</span>
-  </div>
+  <div class="stars"></div>
 
-  <div class="container">
+  <header>
     <h1>Mitchflix</h1>
     <p>Cybersecurity Engineer | Homelab Builder | Space Enthusiast</p>
+    <button id="theme-toggle" aria-label="Toggle dark/light mode">☀️</button>
+  </header>
 
-    <hr>
+  <main>
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>Hi, I’m Mitch — a cybersecurity engineer specialising in enterprise cryptography for financial institutions. 
+      When I’m not securing systems, I’m building out my home lab, exploring observability stacks, and dreaming up ways to merge space tech with security.</p>
+    </section>
 
-    <h2>About Me</h2>
-    <p>
-      Hi, I’m Mitch, a cybersecurity engineer specialising in enterprise cryptography for financial institutions.
-      When I’m not securing systems, I’m building out my home lab, exploring observability stacks,
-      and dreaming up ways to merge space tech with security.
-    </p>
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://github.com/mitchmclellan/monitoring-stack" target="_blank">Prometheus & Grafana Monitoring Stack for Homelab</a></li>
+        <li><a href="https://github.com/mitchmclellan/homelab-docs" target="_blank">Homelab Documentation & CI/CD</a></li>
+        <li><a href="https://github.com/mitchmclellan/secure-space-comms-project" target="_blank">Space Communications & Security Research</a></li>
+        <li><a href="https://github.com/mitchmclellan/crypto-tools" target="_blank">Cryptography Toolkits</a></li>
+        <li><a href="https://github.com/mitchmclellan/todo-cli" target="_blank">CLI To-Do Application in Python</a></li>
+        <li><a href="https://github.com/mitchmclellan/mitchflix-site" target="_blank">Personal Website (This Site!)</a></li>
+        <li><a href="https://github.com/mitchmclellan/arcaiagent" target="_blank">Arc AI Agent for Secure Space Communications</a></li>
+      </ul>
+    </section>
 
-    <h2>Projects</h2>
-    <p>
-      <a href="https://github.com/mitchmclellan/prom-grafana-homelab" target="_blank">
-        Prometheus & Grafana Monitoring Stack for Homelab
-      </a>
-    </p>
-  </div>
+    <section id="contact" class="card">
+      <h2>Connect</h2>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/mitchmclellan" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/mitchmclellan" target="_blank">GitHub</a></li>
+        <li><a href="https://discord.gg" target="_blank">Discord: @humanmitch</a></li>
+        <li><span class="disabled">Plex (friend me: mitchm26)</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Mitchflix | Built with ❤️ on GitHub Pages</p>
+  </footer>
 
   <script>
-    const toggle = document.getElementById('themeToggle');
-    const emoji = document.getElementById('themeEmoji');
-
-    // Determine initial theme
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      document.documentElement.setAttribute('data-theme', storedTheme);
-      emoji.textContent = storedTheme === 'light' ? '🌚' : '🌞';
-    } else {
-      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
-      emoji.textContent = prefersLight ? '🌚' : '🌞';
-    }
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') body.classList.add('light');
 
     toggle.addEventListener('click', () => {
-      emoji.classList.add('rotate');
-      setTimeout(() => emoji.classList.remove('rotate'), 500);
-
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      emoji.textContent = newTheme === 'light' ? '🌚' : '🌞';
+      body.classList.toggle('light');
+      const theme = body.classList.contains('light') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+      toggle.textContent = theme === 'light' ? '🌙' : '☀️';
     });
+
+    // Update toggle icon on load
+    toggle.textContent = body.classList.contains('light') ? '🌙' : '☀️';
   </script>
 </body>
 </html>
